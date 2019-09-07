@@ -1,17 +1,21 @@
-((window) => {
-  const App = window.App || {}
-
-  class DataStore {
-    constructor() {
-    console.log('running the Datastore function');
-    }
+class DataStore {
+  constructor() {
+    this.data = {};
   }
 
-  // let DataStore = () => {
-    // console.log('running the Datastore function')
-    // this.data = {}
-  // }
+  add(key, value) {
+    this.data[key] = value;
+  }
 
-  App.DataStore = new DataStore();
-  window.App = App
-})(window);
+  remove(key) {
+    delete this.data[key];
+  }
+
+  get(key) {
+    return this.data[key];
+  }
+
+  getAll() {
+    return this.data;
+  }
+}
