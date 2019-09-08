@@ -1,10 +1,11 @@
 class Truck {
   constructor(truckId, db) {
     this.truckId = truckId;
-    this.db      = db;
+    this.db = db;
   }
 
   createOrder(order) {
+    // this is not saving the orders in the databas
     console.log(`Adding order for' ${order.emailAdress}`);
     this.db.add(order.emailAdress, order);
   }
@@ -15,12 +16,10 @@ class Truck {
   }
 
   printOrders() {
-    // is only returning one error to bind all the elements
     let customerIdArray = Object.keys(this.db.getAll());
 
-    console.log(`Truck # ${this.truckId} has pending orders:`);
-    customerIdArray.forEach((id) => {
-      console.log(this.db.get(id));
-    })
+    console.log(`Truck # ${this.truckId} has pending orders: `);
+
+    customerIdArray.forEach((id) => console.log(this.db.get(id)));
   }
 }
